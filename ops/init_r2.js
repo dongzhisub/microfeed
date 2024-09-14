@@ -7,10 +7,11 @@ class SetupR2 {
   constructor() {
     const currentEnv = process.env.DEPLOYMENT_ENVIRONMENT || 'production';
     this.v = new VarsReader(currentEnv);
-    this.endpoint = `https://${this.v.get('CLOUDFLARE_ACCOUNT_ID')}.r2.cloudflarestorage.com`;
+    //this.endpoint = `https://${this.v.get('CLOUDFLARE_ACCOUNT_ID')}.r2.cloudflarestorage.com`;
+    this.endpoint = `https://${this.v.get('R2_ENDPOINT')}`;
     
     this.s3 = new S3Client({
-      region: 'auto',
+      region: `${this.v.get('R2_REGION')}`,
       credentials: {
         accessKeyId: this.v.get('R2_ACCESS_KEY_ID'),
         secretAccessKey: this.v.get('R2_SECRET_ACCESS_KEY'),
