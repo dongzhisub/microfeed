@@ -72,6 +72,10 @@ async function getPresignedUrlFromR2(env, bucket, inputParams) {
   });
 
   const presignedUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+  console.log("presignedUrl: " + presignedUrl);
+  console.log(endpoint + "  " + region );
+  console.log(accessKeyId + " : " + secretAccessKey);
+  console.log( `${projectPrefix(env)}/${key}` );
   return presignedUrl;
 }
 
