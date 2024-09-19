@@ -2,7 +2,7 @@ import React from "react";
 import {renderReactToHtml} from "../../edge-src/common/PageUtils";
 import EdgeAdminHomeApp from "../../edge-src/EdgeAdminHomeApp";
 
-export async function onRequestGet({ data }) {
+export async function onRequestGet({ request,data }) {
   const {feedContent, onboardingResult} = data;
 
   // Check for authentication cookie
