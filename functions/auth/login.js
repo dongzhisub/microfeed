@@ -1,4 +1,3 @@
-import crypto from 'node:crypto';
 
 export async function onRequestGet({ request }) {
   const url = new URL(request.url);
@@ -32,8 +31,20 @@ export async function onRequestPost({ request,env }) {
    // Access the secret key from environment variables
   const secretKey = `${env.SECRET_KEY}`; 
 
+  async function hashSecret(secret) {
+    const crypto = globalThis.crypto
+    const encoder = new TextEncoder();
+    const data = encoder.encode(secret);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    return hash;
+  }
+
+
   if (password === secretKey ) {
-    const hashedSecretKey = crypto.createHash('sha256').update(secretKey).digest('hex');
+    const hashedSecretKey = hashSecret(secretKey);
     // 密码正确，设置认证 cookie 并重定向到管理页面
     return new Response('', {
       status: 302,

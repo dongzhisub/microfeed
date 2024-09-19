@@ -2,14 +2,20 @@ import {ADMIN_URLS, urlJoin} from "../../common-src/StringUtils";
 import FeedDb, {getFetchItemsParams} from "../../edge-src/models/FeedDb";
 import OnboardingChecker from "../../common-src/OnboardingUtils";
 import {STATUSES} from "../../common-src/Constants";
-import crypto from 'crypto';
 
 async function fetchFeed({request, next, env, data}) {
   const urlObj = new URL(request.url);
 
   // Function to hash the secret key
-  function hashSecret(secret) {
-    return crypto.createHash('sha256').update(secret).digest('hex');
+  async function hashSecret(secret) {
+    const crypto = globalThis.crypto
+    const encoder = new TextEncoder();
+    const data = encoder.encode(secret);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    return hash;
   }
 
   // Access the secret key from environment variables
