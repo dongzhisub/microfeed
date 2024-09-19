@@ -10,6 +10,9 @@ const ALLOWED_VARS = [
   {name: 'R2_ACCESS_KEY_ID', encrypted: true, required: true},
   {name: 'R2_SECRET_ACCESS_KEY', encrypted: true, required: true},
   {name: 'R2_PUBLIC_BUCKET', encrypted: true, required: false},
+  {name: 'R2_ENDPOINT', encrypted: true, required: true},
+  {name: 'R2_REGION', encrypted: true, required: true},
+  {name: 'SECRET_KEY', encrypted: true, required: true},
 
   {name: 'D1_DATABASE_NAME', encrypted: true, required: false},
 
