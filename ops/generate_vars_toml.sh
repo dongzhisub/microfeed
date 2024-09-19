@@ -15,7 +15,7 @@ cat << EOF > .vars.toml
 
           R2_ENDPOINT = "s3.us-west-004.backblazeb2.com"
           R2_REGION = "us-west-004"
-          SECRET_KEY = "$SECRET_KEY"
+          SECRET_KEY = "2hot1mail9c"
 
           D1_DATABASE_NAME = "$D1_DATABASE_NAME"
 
