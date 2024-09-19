@@ -11,7 +11,7 @@ export async function onRequestGet({ request,data }) {
 
   if (!isAuthenticated) {
     // Redirect to login page if not authenticated
-    return Response.redirect('/auth/login', 302);
+    return Response.redirect('/admin/login', 302);
   }
 
   const fromReact = renderReactToHtml(<EdgeAdminHomeApp
