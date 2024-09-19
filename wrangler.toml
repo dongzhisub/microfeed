@@ -1,3 +1,4 @@
+compatibility_flags = [ "nodejs_compat_v2" ]
 [[ d1_databases ]]
 binding = "FEED_DB"
 database_name = "FEED_DB"

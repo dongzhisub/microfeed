@@ -5,16 +5,6 @@ import EdgeAdminHomeApp from "../../edge-src/EdgeAdminHomeApp";
 export async function onRequestGet({ request,data }) {
   const {feedContent, onboardingResult} = data;
 
-  // Check for authentication cookie
-  const cookieHeader = request.headers.get('Cookie') || '';
-  const isAuthenticated = cookieHeader.includes('authenticated=true');
-
-  if (!isAuthenticated) {
-    console.log("error");
-    // Redirect to login page if not authenticated
-    return Response.redirect('/admin/login', 302);
-  }
-
   const fromReact = renderReactToHtml(<EdgeAdminHomeApp
     feedContent={feedContent}
     onboardingResult={onboardingResult}
