@@ -54,10 +54,10 @@ async function getPresignedUrlFromR2(env, bucket, inputParams) {
   const accessKeyId = `${env.R2_ACCESS_KEY_ID}`;
   const secretAccessKey = `${env.R2_SECRET_ACCESS_KEY}`;
  // const endpoint = `https://${env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`;
- // const endpoint = `https://${env.R2_ENDPOINT}`;
- // const region = `${env.R2_REGION}`; // Use appropriate region
-  const endpoint = "https://s3.us-west-004.backblazeb2.com";
-  const region = "us-west-004";
+  const endpoint = `https://${env.R2_ENDPOINT}`;
+  const region = `${env.R2_REGION}`; // Use appropriate region
+  //const endpoint = "https://s3.us-west-004.backblazeb2.com";
+  //const region = "us-west-004";
 
   const s3Client = new S3Client({
     region,

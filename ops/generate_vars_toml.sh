@@ -13,9 +13,9 @@ cat << EOF > .vars.toml
           R2_SECRET_ACCESS_KEY = "$R2_SECRET_ACCESS_KEY"
           R2_PUBLIC_BUCKET = "$R2_PUBLIC_BUCKET"
 
-          R2_ENDPOINT = "s3.us-west-004.backblazeb2.com"
-          R2_REGION = "us-west-004"
-          SECRET_KEY = "2hot1mail9c"
+          R2_ENDPOINT = "$R2_ENDPOINT"
+          R2_REGION = "$R2_REGION"
+          SECRET_KEY = "$SECRET_KEY"
 
           D1_DATABASE_NAME = "$D1_DATABASE_NAME"
 
